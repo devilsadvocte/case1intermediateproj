@@ -1,0 +1,17 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool: sh-agent
+
+steps:
+
+- script: docker build simplephpimage:latest
+
+- script: docker tag simplephpimage:latest case1contreg.azurecr.io/simplephpimage:latest
+
+- script: docker push case1contreg.azurecr.io/simplephpimage:latest
